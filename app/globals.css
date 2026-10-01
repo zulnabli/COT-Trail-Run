@@ -1,0 +1,416 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+
+:root {
+  color-scheme: light;
+  --background: oklch(0.965 0.006 250);
+  --foreground: oklch(0.22 0.018 255);
+  --card: oklch(0.995 0.003 250);
+  --card-foreground: oklch(0.22 0.018 255);
+  --popover: oklch(0.995 0.003 250);
+  --popover-foreground: oklch(0.22 0.018 255);
+  --primary: oklch(0.63 0.19 42);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.935 0.008 250);
+  --secondary-foreground: oklch(0.22 0.018 255);
+  --muted: oklch(0.945 0.008 250);
+  --muted-foreground: oklch(0.48 0.018 255);
+  --accent: oklch(0.935 0.008 250);
+  --accent-foreground: oklch(0.22 0.018 255);
+  --destructive: oklch(0.56 0.21 27);
+  --success: oklch(0.52 0.12 158);
+  --success-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.8 0.15 78);
+  --warning-foreground: oklch(0.3 0.06 60);
+  --border: oklch(0.895 0.01 250);
+  --input: oklch(0.88 0.01 250);
+  --ring: oklch(0.63 0.19 42);
+  --chart-1: oklch(0.63 0.19 42);
+  --chart-2: oklch(0.42 0.07 165);
+  --chart-3: oklch(0.7 0.1 158);
+  --chart-4: oklch(0.8 0.15 78);
+  --chart-5: oklch(0.56 0.21 27);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: linear-gradient(180deg, oklch(0.93 0.012 250 / 0.55), transparent 20rem);
+  }
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 5mm;
+  }
+
+  html,
+  body {
+    min-height: auto !important;
+    background: #fff !important;
+  }
+
+  body > *:not(#race-print-report) {
+    display: none !important;
+  }
+
+  #race-print-report {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    color: #17211f !important;
+    background: #fff !important;
+    font-family: var(--font-geist-sans), sans-serif !important;
+    font-size: 6.4pt !important;
+    line-height: 1.16 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  #race-print-report * {
+    box-sizing: border-box;
+  }
+
+  #race-print-report .report-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8mm;
+    padding-bottom: 1.5mm;
+    border-bottom: 0.7mm solid #d96b35;
+  }
+
+  #race-print-report .report-eyebrow,
+  #race-print-report .report-label {
+    margin: 0 0 0.8mm;
+    color: #61716b !important;
+    font-size: 6pt;
+    font-weight: 700;
+  }
+
+  #race-print-report .report-header h1 {
+    margin: 0;
+    color: #183b32 !important;
+    font-size: 16pt;
+    line-height: 1.1;
+  }
+
+  #race-print-report .report-subtitle,
+  #race-print-report .report-note {
+    margin: 0.8mm 0 0;
+    color: #586660 !important;
+    font-size: 7pt;
+  }
+
+  #race-print-report .report-header-mark {
+    display: grid;
+    width: 11mm;
+    height: 11mm;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 0.5mm solid #d96b35;
+    color: #183b32 !important;
+    font-size: 10pt;
+    font-weight: 800;
+  }
+
+  #race-print-report .report-outcome {
+    display: flex;
+    justify-content: space-between;
+    gap: 5mm;
+    margin: 1.5mm 0;
+    padding: 1.5mm 3mm;
+    border-left: 0.8mm solid #276b55;
+    background: #f0f5f2 !important;
+  }
+
+  #race-print-report .report-outcome h2 {
+    margin: 0;
+    color: #183b32 !important;
+    font-size: 9pt;
+  }
+
+  #race-print-report .report-outcome p,
+  #race-print-report .report-outcome span {
+    margin: 0.5mm 0 0;
+    color: #586660 !important;
+    font-size: 7pt;
+  }
+
+  #race-print-report .report-outcome-time {
+    min-width: 42mm;
+    text-align: right;
+  }
+
+  #race-print-report .report-outcome-time strong {
+    display: block;
+    color: #183b32 !important;
+    font-size: 13pt;
+    line-height: 1.1;
+  }
+
+  #race-print-report .report-outcome-time span {
+    display: block;
+  }
+
+  #race-print-report .report-section {
+    margin: 1.2mm 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  #race-print-report .report-section h2 {
+    margin: 0 0 0.7mm;
+    padding-bottom: 0.4mm;
+    border-bottom: 0.3mm solid #d8e0dc;
+    color: #183b32 !important;
+    font-size: 7.2pt;
+  }
+
+  #race-print-report .report-section h3 {
+    margin: 0 0 0.8mm;
+    color: #183b32 !important;
+    font-size: 7pt;
+  }
+
+  #race-print-report .report-facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5mm 3mm;
+  }
+
+  #race-print-report .report-facts > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2mm;
+    padding: 0.7mm 0;
+    border-bottom: 0.25mm solid #e3e9e6;
+  }
+
+  #race-print-report .report-facts span {
+    color: #61716b !important;
+    font-size: 6pt;
+  }
+
+  #race-print-report .report-facts strong {
+    color: #17211f !important;
+    font-size: 7pt;
+  }
+
+  #race-print-report .report-facts-compact {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #race-print-report .report-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 6.6pt;
+  }
+
+  #race-print-report .report-table th,
+  #race-print-report .report-table td {
+    padding: 0.8mm 1mm;
+    border-bottom: 0.25mm solid #dfe6e2;
+    color: #17211f !important;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  #race-print-report .report-table th {
+    background: #eef3f0 !important;
+    color: #36534a !important;
+    font-size: 6.2pt;
+    font-weight: 700;
+  }
+
+  #race-print-report .report-course .recharts-responsive-container {
+    height: 34mm !important;
+    min-height: 34mm !important;
+  }
+
+  #race-print-report .report-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+  }
+
+  #race-print-report .report-two-column ul {
+    margin: 0;
+    padding-left: 3mm;
+  }
+
+  #race-print-report .report-two-column li {
+    margin: 0 0 0.5mm;
+  }
+
+  #race-print-report .report-profile-section {
+    margin: 0.8mm 0;
+  }
+
+  #race-print-report .report-profile-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4mm;
+  }
+
+  #race-print-report .report-profile-heading h2,
+  #race-print-report .report-profile-heading p {
+    margin: 0 0 0.7mm;
+  }
+
+  #race-print-report .report-profile-heading p {
+    color: #586660 !important;
+    font-size: 6.5pt;
+  }
+
+  #race-print-report .report-profile-svg {
+    display: block;
+    width: 100%;
+    height: 19mm;
+  }
+
+  #race-print-report .report-axis-label {
+    fill: #53635d;
+    font-size: 9px;
+  }
+
+  #race-print-report .report-axis-title {
+    fill: #183b32;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  #race-print-report .report-overview-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 5mm;
+  }
+
+  #race-print-report .report-overview-left,
+  #race-print-report .report-overview-right {
+    min-width: 0;
+  }
+
+  #race-print-report .report-all-weeks {
+    margin-top: 1mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  #race-print-report .report-weeks-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35mm 3mm;
+  }
+
+  #race-print-report .report-week-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 1mm;
+    min-width: 0;
+    padding: 0.3mm 0;
+    border-bottom: 0.2mm solid #e3e9e6;
+    font-size: 5.6pt;
+    line-height: 1.12;
+    white-space: nowrap;
+  }
+
+  #race-print-report .report-week-row strong {
+    color: #244f43 !important;
+  }
+
+  #race-print-report .report-week-row span:nth-child(2) {
+    overflow: hidden;
+    color: #61716b !important;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+
+  #race-print-report .report-week-row span:last-child {
+    color: #17211f !important;
+    text-align: right;
+  }
+
+  #race-print-report .report-priorities {
+    margin-top: 1mm;
+  }
+
+  #race-print-report .report-priorities li {
+    margin-bottom: 0.3mm;
+  }
+
+  #race-print-report .report-footer {
+    margin-top: 1mm;
+    padding-top: 0.6mm;
+    border-top: 0.3mm solid #d8e0dc;
+    color: #61716b !important;
+    font-size: 5.8pt;
+  }
+}

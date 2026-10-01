@@ -1,0 +1,1 @@
+export const CLOUD_SYNC_ENABLED = process.env.NEXT_PUBLIC_SYNC_ENABLED === 'true'
